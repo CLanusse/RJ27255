@@ -1,14 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { NavBar } from './components/NavBar/NavBar'
+import { Footer } from './components/Footer/Footer'
+import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ItemCount } from './components/ItemCount/ItemCount';
+import { useState } from 'react';
+import { Clicker } from './ejemplos/Clicker/Clicker';
+import { FyH } from './ejemplos/Clicker/FyH';
+
+
 
 function App() {
 
+  const [mostrar, setMostrar] = useState(true)
+
+  const handleMostrar = () => {
+    setMostrar(!mostrar)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <h2>¡Hola mundo!</h2>
-      </header>
+      <NavBar />
+      <button onClick={handleMostrar}>mostrar</button>
+      { mostrar && <FyH /> }
+      { mostrar && <Clicker/> }
+      
+      
+
+      <ItemCount stock={20} initial={5}/>
+      {/* <ItemListContainer greeting="Hola Coders!"/> */}
+
+      <Footer />
     </div>
   );
 }
