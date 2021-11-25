@@ -5,11 +5,7 @@ export const Clicker = () => {
 
     const [clicks, setClicks] = useState(0)
 
-    // let clicksDos = 0
-    // console.log(clicksDos)
-
     const handleClick = () => {
-        // clicksDos++
         setClicks( clicks + 1 )
     }
 
