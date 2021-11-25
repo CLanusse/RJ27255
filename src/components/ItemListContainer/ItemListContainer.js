@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { pedirDatos } from '../../helpers/pedirDatos'
+import { ItemList } from '../ItemList/ItemList'
 
-export const ItemListContainer = ( {greeting} ) => {
+export const ItemListContainer = () => {
 
     const [items, setItems] = useState([])
-
-    console.log(items)
+    const [loading, setLoading] = useState(false)
 
     useEffect(()=>{
 
+        setLoading(true)
         pedirDatos()
             .then((resp) => {
                 setItems( resp )
@@ -17,16 +18,19 @@ export const ItemListContainer = ( {greeting} ) => {
                 console.log(err)
             })
             .finally(() => {
-                console.log("Petición finalizada")
+                setLoading(false)
             })
 
     }, [])
 
     return (
         <div>
-            <h2>{greeting}</h2>
-            <hr/>
-
+            {
+                loading
+                    ? <h2>Cargando...</h2>
+                    : <ItemList items={items}/>
+            }
+            
         </div>
     )
 }

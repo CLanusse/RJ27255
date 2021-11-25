@@ -1,6 +1,28 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 
+
+// q = "string"
+// limit = number
+// query params
+// const url = "https://www.coderhouse.com/search?q=javascript&limit=20"
+
+//   https://www.coderhouse.com/search/{busqueda}/{limit}
+// const url = "https://www.coderhouse.com/search/javascript/25"
+
+// fetch(url, {
+//     method: 'POST',
+//     headers: {
+//         Authentication: 'TOKEN abc123'
+//     },
+//     body: {
+//         user: {
+//             name: 'John',
+//             lastname: 'Doe'
+//         }
+//     }
+// }) 
+
 export const PostApi = () => {
 
     const [id, setId] = useState(1)
