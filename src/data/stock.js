@@ -5,7 +5,8 @@ export const stock = [
         precio: 1500,
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
-        category: 'remeras'
+        category: 'remeras',
+        stock: 20
     },
     {
         id: 2,
@@ -13,7 +14,8 @@ export const stock = [
         precio: 2500,
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
-        category: 'remeras'
+        category: 'remeras',
+        stock: 20
     },
     {
         id: 3,
@@ -21,7 +23,8 @@ export const stock = [
         precio: 3500,
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
-        category: 'remeras'
+        category: 'remeras',
+        stock: 20
     },
     {
         id: 4,
@@ -29,7 +32,8 @@ export const stock = [
         precio: 4500,
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
-        category: 'zapatillas'
+        category: 'zapatillas',
+        stock: 20
     },
     {
         id: 5,
@@ -37,7 +41,8 @@ export const stock = [
         precio: 5500,
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
-        category: 'zapatillas'
+        category: 'zapatillas',
+        stock: 20
     },
     {
         id: 6,
@@ -45,7 +50,8 @@ export const stock = [
         precio: 6500,
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
-        category: 'zapatillas'
+        category: 'zapatillas',
+        stock: 20
     },
     {
         id: 7,
@@ -53,7 +59,8 @@ export const stock = [
         precio: 7500,
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
-        category: 'buzos'
+        category: 'buzos',
+        stock: 20
     },
     {
         id: 8,
@@ -61,6 +68,7 @@ export const stock = [
         precio: 8500,
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
-        category: 'buzos'
+        category: 'buzos',
+        stock: 20
     },
 ]

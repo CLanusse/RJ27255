@@ -6,7 +6,7 @@ import './NavBar.scss'
 export const NavBar = () => {
 
     return (
-        <header className="navbar">
+        <header className="navbar px-5">
             <Link to="/"><h1>Coder RJ</h1></Link>
             
             <nav>
