@@ -6,7 +6,8 @@ export const stock = [
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
         category: 'remeras',
-        stock: 20
+        stock: 20,
+        oferta: false
     },
     {
         id: 2,
@@ -15,7 +16,8 @@ export const stock = [
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
         category: 'remeras',
-        stock: 20
+        stock: 20,
+        oferta: true
     },
     {
         id: 3,
@@ -24,7 +26,8 @@ export const stock = [
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
         category: 'remeras',
-        stock: 20
+        stock: 20,
+        oferta: false
     },
     {
         id: 4,
@@ -33,7 +36,8 @@ export const stock = [
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
         category: 'zapatillas',
-        stock: 20
+        stock: 20,
+        oferta: false
     },
     {
         id: 5,
@@ -42,7 +46,8 @@ export const stock = [
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
         category: 'zapatillas',
-        stock: 20
+        stock: 20,
+        oferta: false
     },
     {
         id: 6,
@@ -51,7 +56,8 @@ export const stock = [
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
         category: 'zapatillas',
-        stock: 20
+        stock: 20,
+        oferta: true
     },
     {
         id: 7,
@@ -60,7 +66,8 @@ export const stock = [
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
         category: 'buzos',
-        stock: 20
+        stock: 20,
+        oferta: true
     },
     {
         id: 8,
@@ -69,6 +76,7 @@ export const stock = [
         img: 'https://via.placeholder.com/200',
         desc: 'Lorem ipsum',
         category: 'buzos',
-        stock: 20
+        stock: 20,
+        oferta: false
     },
 ]

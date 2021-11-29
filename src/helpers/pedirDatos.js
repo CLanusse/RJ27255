@@ -9,6 +9,7 @@ export const pedirDatos = () => {
 }
 
 export const pedirItem = (id) => {
+    console.log(id)
     return new Promise( (resolve, reject) => {
         setTimeout(() => {
             resolve( stock.find(el => el.id === id) )
