@@ -1,12 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { BsFillTrashFill } from 'react-icons/bs'
-import { CartContext } from '../../context/CartContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { emptyCart, removeItem } from '../../actions/cartActions'
 
 export const CartView = () => {
 
-    const { cart, vaciarCarrito, totalCompra, removerDelCarrito } = useContext(CartContext)
-
+    const { cart } = useSelector(state => state)
+    const dispatch = useDispatch()
 
     // return si no hay elementos
     if (cart.length === 0) {
@@ -32,7 +33,7 @@ export const CartView = () => {
                         <p>Cantidad: {el.cantidad}</p>
                         <button 
                             className="btn btn-danger"
-                            onClick={() => removerDelCarrito(el.id)}
+                            onClick={() => dispatch( removeItem(el.id) )}
                         >
                             <BsFillTrashFill/>
                         </button>
@@ -42,9 +43,9 @@ export const CartView = () => {
 
             <hr/>
 
-            <h4>Total: ${totalCompra()}</h4>
+            <h4>Total: ${cart.reduce((acc, el) => acc + el.precio * el.cantidad, 0)}</h4>
 
-            <button onClick={vaciarCarrito} className="btn btn-danger">Vaciar carrito</button>
+            <button onClick={() => dispatch( emptyCart() )} className="btn btn-danger">Vaciar carrito</button>
             <Link to="/checkout" className="btn btn-success mx-3">Terminar mi compra</Link>
         </div>
     )

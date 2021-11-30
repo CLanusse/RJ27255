@@ -1,11 +1,18 @@
 import React, { useContext } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
+import { addItem } from '../../actions/cartActions'
 import { CartContext } from '../../context/CartContext'
 import { useCounter } from '../../hooks/useCounter'
 import { ItemCount } from '../ItemCount/ItemCount'
 
 export const ItemDetail = ({item}) => {
+
+    const dispatch = useDispatch()
+    const cart = useSelector(state => state)
+    console.log(cart)
 
     const { agregarAlCarrito, isInCart } = useContext(CartContext)
 
@@ -19,12 +26,24 @@ export const ItemDetail = ({item}) => {
 
     const handleAgregar = () => {
         
-        counter > 0 && agregarAlCarrito({
-                            id: item.id,
-                            precio: item.precio,
-                            nombre: item.nombre,
-                            cantidad: counter
-                        })
+        if (counter > 0) {
+            const newItem = {
+                id: item.id,
+                precio: item.precio,
+                nombre: item.nombre,
+                cantidad: counter
+            }
+
+            dispatch( addItem(newItem) )
+        }
+
+
+        // counter > 0 && agregarAlCarrito({
+        //                     id: item.id,
+        //                     precio: item.precio,
+        //                     nombre: item.nombre,
+        //                     cantidad: counter
+        //                 })
     }
 
     return (

@@ -7,34 +7,34 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { CartView } from './components/CartView/CartView';
 import { CartProvider } from './context/CartContext';
 import { Checkout } from './components/Checkout/Checkout';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 function App() {
 
 
   return (
 
-    <CartProvider>
+    <Provider store={store}>
 
-      <BrowserRouter>
-      
-          <NavBar />
+      <CartProvider>
+        <BrowserRouter>
+            <NavBar />
 
-          <Routes>
-            <Route path="/" element={ <ItemListContainer/> }/>
-            <Route path="/category/:categoryId" element={ <ItemListContainer/>} />
-            <Route path="/detail/:itemId" element={ <ItemDetailContainer/> }/>
-            <Route path="/cart" element={ <CartView/>} />
-            <Route path="/checkout" element={ <Checkout/>} />
-            <Route path="*" element={ <Navigate to="/"/> } />
-          </Routes>
+            <Routes>
+              <Route path="/" element={ <ItemListContainer/> }/>
+              <Route path="/category/:categoryId" element={ <ItemListContainer/>} />
+              <Route path="/detail/:itemId" element={ <ItemDetailContainer/> }/>
+              <Route path="/cart" element={ <CartView/>} />
+              <Route path="/checkout" element={ <Checkout/>} />
+              <Route path="*" element={ <Navigate to="/"/> } />
+            </Routes>
 
-          <Footer />
-        
-      </BrowserRouter>
+            <Footer />
+        </BrowserRouter>
+      </CartProvider>
 
-    </CartProvider>
-
-  
+      </Provider>
   );
 }
 
