@@ -16,7 +16,7 @@ export const ItemListContainer = () => {
     
     useEffect(()=>{
         dispatch( getProductsFromFirebase(categoryId) )
-    }, [categoryId])
+    }, [categoryId, dispatch])
 
     return (
         <>

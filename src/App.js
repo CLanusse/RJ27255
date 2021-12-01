@@ -34,7 +34,7 @@ function App() {
         </BrowserRouter>
       </CartProvider>
 
-      </Provider>
+    </Provider>
   );
 }
 

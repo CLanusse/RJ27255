@@ -1,20 +1,38 @@
 import React, { useContext, useState } from 'react'
 import { CartContext } from '../../context/CartContext'
-import { Timestamp, collection, addDoc, doc, getDocs, writeBatch, query, where, documentId } from 'firebase/firestore/lite'
+import { Timestamp, collection, addDoc, getDocs, writeBatch, query, where, documentId } from 'firebase/firestore/lite'
 import { db } from '../../firebase/config'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
+
+
+const schema = Yup.object().shape({
+    nombre: Yup.string()
+            .required('Este campo es obligatorio')
+            .min(4, 'El nombre es demasiado corto')
+            .max(30, 'El nombre es demasiado largo'),
+    email: Yup.string()
+            .required('Este campo es obligatorio')
+            .email('Email inválido'),
+    tel: Yup.string()
+            .required('Este campo es obligatorio')
+            .min(8, 'Formato inválido')
+})
+
 
 export const Checkout = () => {
-
-    const [orderId, setOrderId] = useState(null)
-
-    const [values, setValues] = useState({
+    const values = {
         nombre: '',
         email: '',
         tel: ''
-    })
+    }
 
-    const { cart, totalCompra, vaciarCarrito } = useContext(CartContext)
+    const [orderId, setOrderId] = useState(null)
+
+    const { cart } = useSelector(state => state)
+    const { totalCompra, vaciarCarrito } = useContext(CartContext)
 
     const generarOrden = (buyer) => {
         const order = {
@@ -62,24 +80,6 @@ export const Checkout = () => {
             })
     }
 
-    const handleInputChange = (e) => {
-        setValues({
-            ...values,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        if( values.nombre.length > 4 && values.email.length > 5 ) {
-            generarOrden(values)
-        } else {
-            alert("Campos inválidos")
-        }
-    }
-
-
     return (
         <div className="container my-5">
 
@@ -98,35 +98,50 @@ export const Checkout = () => {
                             <h2>Resumen de compra</h2>
                             <hr/>
 
-                            <form onSubmit={handleSubmit}>
-                                <input
-                                    value={values.nombre}
-                                    onChange={handleInputChange}
-                                    name="nombre"
-                                    className="form-control my-2"
-                                    placeholder="Nombre y apellido"
-                                    type="text"
-                                />
-                                <input
-                                    value={values.email}
-                                    onChange={handleInputChange}
-                                    name="email"
-                                    className="form-control my-2"
-                                    placeholder="Email"
-                                    type="email"
-                                />
-                                <input
-                                    value={values.tel}
-                                    onChange={handleInputChange}
-                                    name="tel"
-                                    className="form-control my-2"
-                                    placeholder="Teléfono"
-                                    type="tel"
-                                />
+                            <Formik
+                                initialValues={values}
+                                validationSchema={schema}
+                                onSubmit={(values) => {
+                                    console.log(values)
+                                    generarOrden(values)
+                                }}
+                            >
+                                {(formik) => (
+                                    <form onSubmit={formik.handleSubmit}>
+                                        <input
+                                            value={formik.values.nombre}
+                                            onChange={formik.handleChange}
+                                            name="nombre"
+                                            className="form-control my-2"
+                                            placeholder="Nombre y apellido"
+                                            type="text"
+                                        />
+                                        {formik.errors.nombre && <p className="alert alert-danger">{formik.errors.nombre}</p>}
 
-                                <button type="submit" className="btn btn-success">Enviar</button>
-                            </form>
+                                        <input
+                                            value={formik.values.email}
+                                            onChange={formik.handleChange}
+                                            name="email"
+                                            className="form-control my-2"
+                                            placeholder="Email"
+                                            type="email"
+                                        />
+                                        {formik.errors.email && <p className="alert alert-danger">{formik.errors.email}</p>}
 
+                                        <input
+                                            value={formik.values.tel}
+                                            onChange={formik.handleChange}
+                                            name="tel"
+                                            className="form-control my-2"
+                                            placeholder="Teléfono"
+                                            type="tel"
+                                        />
+                                        {formik.errors.tel && <p className="alert alert-danger">{formik.errors.tel}</p>}
+
+                                        <button type="submit" className="btn btn-success">Enviar</button>
+                                    </form>
+                                )}
+                            </Formik>
                         </>
             }
 

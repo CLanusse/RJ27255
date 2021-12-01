@@ -20,16 +20,6 @@ export const stock = [
         oferta: true
     },
     {
-        id: 3,
-        nombre: 'Producto 3',
-        precio: 3500,
-        img: 'https://via.placeholder.com/200',
-        desc: 'Lorem ipsum',
-        category: 'remeras',
-        stock: 20,
-        oferta: false
-    },
-    {
         id: 4,
         nombre: 'Producto 4',
         precio: 4500,

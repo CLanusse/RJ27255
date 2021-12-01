@@ -14,7 +14,7 @@ export const ItemDetail = ({item}) => {
     const cart = useSelector(state => state)
     console.log(cart)
 
-    const { agregarAlCarrito, isInCart } = useContext(CartContext)
+    const { isInCart } = useContext(CartContext)
 
     const {counter, increment, decrement} = useCounter(0, item.stock, 0)
 
